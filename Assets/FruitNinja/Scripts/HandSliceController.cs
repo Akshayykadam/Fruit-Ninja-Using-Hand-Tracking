@@ -17,7 +17,7 @@ namespace FruitNinja
         [SerializeField] private float _minSliceVelocity = 300f; // pixels/second
         [SerializeField] private float _visibilityThreshold = 0.5f;
         [SerializeField] private LayerMask _fruitLayer;
-        [SerializeField] private float _sliceRadius = 50f; // pixels
+        [SerializeField] private float _sliceRadius = 100f; // pixels
         
         [Header("Trail Effect")]
         [SerializeField] private GameObject _trailPrefab;
