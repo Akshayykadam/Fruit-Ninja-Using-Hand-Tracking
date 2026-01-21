@@ -1,176 +1,92 @@
-# 🏃‍♂️ Real-Time Pose & Hand Tracking
+# 🍉 Fruit Ninja - Hand Tracking Edition
 
-A high-performance Unity SDK for real-time human pose and hand landmark detection using **MediaPipe**. This project enables accurate body pose estimation and hand tracking on both mobile devices (Android/iOS) and the Unity Editor.
-
-![GIF-2025-12-12-18-27-49](https://github.com/user-attachments/assets/83020b12-8e1e-46de-b2ad-4525c188f0d0)
-
+A reimagined version of the classic Fruit Ninja game, powered by **MediaPipe** for real-time hand tracking. Slice fruits with your hands using just a webcam!
 
 ![Unity](https://img.shields.io/badge/Unity-2021.3+-black?logo=unity)
 ![MediaPipe](https://img.shields.io/badge/MediaPipe-0.16.3-blue)
 ![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20Editor-green)
-![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
 
 ## ✨ Features
 
-- **Real-Time Pose Detection** — Track 33 body landmarks with high accuracy
-- **Hand Tracking** — Detect hand landmarks with custom visual effects (like fire effects!)
-- **GPU Acceleration** — Optimized for mobile with GPU inference support
-- **Cross-Platform** — Works on Android, iOS, and Unity Editor
-- **Easy Setup** — One-click scene setup via Unity Editor tools
-- **Customizable Visuals** — Adjustable landmark sizes, connection widths, and custom shaders
-- **Automatic Camera Handling** — Front-facing camera default on mobile with rotation-aware aspect fitting
+- **👋 Intearctive Hand Tracking**: Your hand is the blade! Slice through fruits using advanced hand landmark detection.
+- **🍎 Classic Gameplay**: Slice watermelons, oranges, and more while avoiding bombs.
+- **🔥 Visual Effects**: satisfying slice effects, particle systems, and dynamic UI.
+- **📱 Cross-Platform**: Optimized for both Mobile (Android/iOS) and Desktop (Editor/Standalone).
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- **Unity 2021.3** or later
-- **MediaPipe Unity Plugin** (`com.github.homuler.mediapipe` v0.16.2+)
+- **Unity 2021.3** or later (LTS recommended).
+- **Webcam** (for Editor/Desktop play).
+- A mobile device (Android/iOS) for mobile deployment.
 
 ### Installation
 
-1. Clone this repository:
+1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/Real-Time-Pose---Hand-Tracking.git
+   git clone https://github.com/yourusername/Fruit-Ninja-Using-Hand-Tracking.git
    ```
 
-2. Open the project in Unity
+2. **Open in Unity**
+   - Launch Unity Hub.
+   - Add/Open the project folder.
 
-3. Install the MediaPipe Unity Plugin:
-   - Download from [MediaPipe Unity Plugin Releases](https://github.com/homuler/MediaPipeUnityPlugin/releases)
-   - In Unity: `Window > Package Manager > + > Add package from tarball...`
-   - Select the downloaded `.tgz` file
+3. **Install Dependencies**
+   - The project uses the **MediaPipe Unity Plugin**. Ensure all package dependencies are resolved via the Unity Package Manager.
 
-### Scene Setup
+### How to Play
 
-Use the automated setup tool:
-
-1. Go to **Tools > Pose SDK** in the Unity menu
-2. Click **Setup Scene**
-3. This creates a complete scene with:
-   - **Bootstrap** — Initializes MediaPipe
-   - **PoseDetector** — Runs AI inference and handles rendering
-   - **Canvas/RawImage** — Displays the camera feed
-
----
-
-## 📱 Mobile Configuration
-
-### Android Requirements
-
-For GPU acceleration to work properly:
-
-1. Go to **Project Settings > Player > Android > Other Settings**
-2. **Uncheck** `Auto Graphics API`
-3. **Remove Vulkan** (not supported by MediaPipe GPU)
-4. Add **OpenGLES3** as the first/only graphics API
-5. Set **Minimum API Level** to Android 7.0 (Nougat) or higher
-
-### iOS Requirements
-
-1. Ensure **Metal** is enabled (default)
-2. Add Camera Usage Description in `Info.plist`
-
----
-
-## ⚙️ Configuration
-
-### Resolution Settings
-
-To adjust detection quality:
-
-1. Find the **AppSettings** ScriptableObject asset
-2. Under **WebCam Source**, set **Preferred Default Web Cam Width**:
-   - `1920` — Full HD
-   - `2560` — 2K
-   - `3840` — 4K
-
-### Visual Customization
-
-Modify the **MultiPoseLandmarkList Annotation** prefab:
-
-| Setting | Description | Range |
-|---------|-------------|-------|
-| Connection Width | Line thickness | 0-20 |
-| Landmark Radius | Point size | 0-10 |
-
----
-
-## 🔥 Special Effects
-
-This project includes custom visual effects:
-
-- **Fire Effects** — Procedural fire shader for hand tracking visualizations
-- **Custom Shaders** — Located in `Assets/Fire Effects/`
+1. Open the main scene: `Assets/FruitNinja/Scenes/FruitNinja.unity`.
+2. Press **Play** in the Unity Editor.
+3. Allow camera access if prompted.
+4. Stand back so your hands are visible to the webcam.
+5. Move your hand to slice the fruits appearing on the screen!
+   - **Slice Fruits**: Earn points.
+   - **Avoid Bombs**: Slicing a bomb ends the game (or reduces lives).
+   - **Don't drop fruits**: Missed fruits may cost you a life.
 
 ---
 
 ## 📁 Project Structure
 
 ```
-Real-Time-Pose---Hand-Tracking/
+Fruit-Ninja-Using-Hand-Tracking/
 ├── Assets/
-│   ├── PoseLandmarkSDK/      # Runtime scripts, prefabs, shaders
-│   ├── Fire Effects/          # Custom fire effect materials & shaders
-│   ├── Scenes/                # Sample scenes
-│   └── StreamingAssets/       # MediaPipe model files
-├── Packages/
-│   └── PoseLandmarkSDK/       # Core SDK package
-└── ProjectSettings/           # Unity project settings
+│   ├── FruitNinja/            # Main Game Assets
+│   │   ├── Scenes/            # Game Scenes (FruitNinja.unity)
+│   │   ├── Scripts/           # Game Logic (Spawning, Slicing, Score)
+│   │   ├── Prefab/            # Fruit & Bomb Prefabs
+│   │   └── UI/                # Game UI Elements
+│   ├── PoseLandmarkSDK/       # Hand Tracking Core (MediaPipe implementation)
+│   └── StreamingAssets/       # MediaPipe Models
 ```
-
----
-
-## 🐛 Troubleshooting
-
-| Issue | Solution |
-|-------|----------|
-| **"ImageReadMode.GPU not supported" in Editor** | This is normal — the Editor uses CPU fallback. GPU only works on device. |
-| **Black screen on device** | Ensure you're using **OpenGLES3**, not Vulkan. Check camera permissions. |
-| **Landmarks floating/misaligned** | Ensure PoseDetector is a child of RawImage. Set Canvas to `Screen Space - Camera`. |
-| **Low FPS on high-end devices** | Check that GPU inference is enabled. Verify OpenGLES3 is configured. |
-| **Camera permissions crash** | The SDK now waits for explicit user permission before initializing. |
 
 ---
 
 ## 🛠️ Technical Details
 
-### Key Components
+This project leverages a custom **Pose/Hand SDK** wrapper around MediaPipe to provide:
+- **GPU Acceleration**: Efficient inference on mobile devices.
+- **Smooth Tracking**: Filtered landmark data for stable slicing interactions.
+- **Unity Integration**: Maps 2D hand coordinates to Unity World Space for interaction with 3D/2D game objects.
 
-- **PoseLandmarkerRunner** — Main component for pose detection
-- **WebCamSource** — Camera input handler with mobile priority
-- **SimplePoseAnnotationController** — Safe prefab instantiation for landmarks
-- **Screen.cs** — Rotation-aware aspect fitting for proper display
-
-### Performance Optimizations
-
-- Forced GPU inference on Android/iOS for real-time performance
-- Automatic fallback to CPU in Unity Editor
-- Efficient async image read modes for iOS
-
----
-
-## 📚 Documentation
-
-For detailed integration instructions, see [Integration_Guide.md](./Integration_Guide.md).
+### key Scripts
+- `HandSliceController.cs`: Manages hand input and collision detection with fruits.
+- `FruitGameController.cs`: Controls the game loop, spawning logic, and state management.
+- `ScoreManager.cs`: Handles scoring and UI updates.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License.
-
----
+This project is open-source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
-- [MediaPipe](https://mediapipe.dev/) by Google
-- [MediaPipe Unity Plugin](https://github.com/homuler/MediaPipeUnityPlugin) by homuler
-
----
-
-
+- **MediaPipe** by Google for the incredible tracking technology.
+- **Homuler** for the [MediaPipe Unity Plugin](https://github.com/homuler/MediaPipeUnityPlugin).
