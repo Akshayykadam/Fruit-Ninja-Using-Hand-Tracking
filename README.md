@@ -104,10 +104,6 @@ This project leverages a custom **Pose/Hand SDK** wrapper around MediaPipe to pr
 
 ---
 
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
 ## 🙏 Acknowledgments
 
 - **MediaPipe** by Google for the incredible tracking technology.
