@@ -7,7 +7,8 @@ A reimagined version of the classic Fruit Ninja game, powered by **MediaPipe** f
 ![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20Editor-green)
 
 ---
-
+![Screen Recording 2026-01-21 at 10 (1)](https://github.com/user-attachments/assets/be9dc377-4b0e-49ad-8ba8-3d20a505e6b4)
+---
 ## ✨ Features
 
 - **👋 Intearctive Hand Tracking**: Your hand is the blade! Slice through fruits using advanced hand landmark detection.
@@ -18,6 +19,7 @@ A reimagined version of the classic Fruit Ninja game, powered by **MediaPipe** f
 ---
 
 ## 🚀 Getting Started
+
 
 ### Prerequisites
 
