@@ -50,6 +50,28 @@ A reimagined version of the classic Fruit Ninja game, powered by **MediaPipe** f
    - **Avoid Bombs**: Slicing a bomb ends the game (or reduces lives).
    - **Don't drop fruits**: Missed fruits may cost you a life.
 
+
+---
+
+## 🖐️ How Hand Tracking Works
+
+The system uses **MediaPipe Pose** to turn your hands into virtual blades. Here is the technical breakdown:
+
+### 1. Detection Logic
+The `HandSliceController` tracks specific landmarks on your body:
+- **Wrists** (Indices 15 & 16)
+- **Index Fingers** (Indices 19 & 20)
+
+A "Hand Center" is calculated by interpolating between the wrist and index finger to create a stable point that represents your hand position on screen.
+
+### 2. Slicing Physics
+To feel realistic, we don't just track position — we track **speed**:
+- **Velocity Threshold**: The system acts like a real sword. It only registers a "slice" if your hand is moving faster than `300 pixels/second`. Slow movements won't cut fruit!
+- **Collision**: We convert your 2D screen coordinates into Unity World Coordinates and use `Physics2D.OverlapCircle` to detect when your "hand point" intersects with a Fruit collider.
+
+### 3. Visual Smoothing
+Raw tracking data can be jittery. We use `Vector3.SmoothDamp` to interpolate the movement of the visual trails, ensuring the glowing slice effects look fluid and responsive.
+
 ---
 
 ## 📁 Project Structure
