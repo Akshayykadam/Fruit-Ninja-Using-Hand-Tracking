@@ -25,6 +25,7 @@ A reimagined version of the classic Fruit Ninja game, powered by **MediaPipe** f
 - **Webcam** (for Editor/Desktop play).
 - A mobile device (Android/iOS) for mobile deployment.
 
+
 ### Installation
 
 1. **Clone the Repository**
@@ -38,6 +39,16 @@ A reimagined version of the classic Fruit Ninja game, powered by **MediaPipe** f
 
 3. **Install Dependencies**
    - The project uses the **MediaPipe Unity Plugin**. Ensure all package dependencies are resolved via the Unity Package Manager.
+
+### 📱 Android Build Settings (Important!)
+
+To ensure the hand tracking runs on the GPU, you **must** configure the Graphics API:
+
+1. Go to `Project Settings > Player > Android > Other Settings`.
+2. Uncheck `Auto Graphics API`.
+3. **Remove** `Vulkan` (MediaPipe GPU does not support Vulkan).
+4. Add `OpenGLES3` to the list.
+5. Set **Minimum API Level** to `Android 7.0 (Nougat)` or higher.
 
 ### How to Play
 
@@ -103,6 +114,10 @@ This project leverages a custom **Pose/Hand SDK** wrapper around MediaPipe to pr
 - `ScoreManager.cs`: Handles scoring and UI updates.
 
 ---
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
