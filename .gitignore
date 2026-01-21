@@ -9,6 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+.utmp/
 
 # MemoryCaptures can get excessive
 /[Mm]emoryCaptures/
@@ -58,6 +59,7 @@ sysinfo.txt
 *.apk
 *.aab
 *.unitypackage
+*.app
 
 # Crashlytics generated file
 crashlytics-build.properties
@@ -73,3 +75,12 @@ Thumbs.db
 
 # Backups
 *_BackUpThisFolder_ButDontShipItWithYourGame/
+
+# Burst
+/[Bb]urst[Dd]ebug[Ii]nformation_DoNotShip/
+
+# MediaPipe Models (Assuming specific models should not be committed/large files)
+# /[Aa]ssets/[Ss]treaming[Aa]ssets/*.bytes
+
+# Local Configuration
+/[Aa]ssets/[Ss]treaming[Aa]ssets/local_config.json
